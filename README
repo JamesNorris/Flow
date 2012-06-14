@@ -3,7 +3,7 @@ WARNING - THIS PLUGIN IS IN DEVELOPMENT STAGES. PLEASE KEEP BACKUPS OF ALL SERVE
 
 
 HOW?
-This plugin was created by JamesNorris to help fix water streams. It works during rain to create a new water source block, next to an old water source block, as long as there is a solid block underneath it.
+This plugin was created by JamesNorris to help fix water streams. It works during rain to create a new water source block, next to an old water source block, as long as there is a solid block underneath it. This plugin can also be used without rain, but defaults to rain. (This is editable in the config)
 
 WHY?
 As far as I can tell, there are currently no plugins that help prevent streams from forming COMPLETELY. This plugin aims to achieve that goal, and I will not stop working on this plugin until I can somewhat achieve that goal.
@@ -11,3 +11,4 @@ As far as I can tell, there are currently no plugins that help prevent streams f
 COMMANDS:
 
 /flow info - flow.info - SHOW FLOW INFO
+/flow fix - flow.fix - FIX WATER WITHOUT RAIN
