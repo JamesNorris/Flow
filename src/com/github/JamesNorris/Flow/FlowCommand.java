@@ -1,3 +1,5 @@
+//MUST BE PUT INTO FLOWFIXEFFECT WHEN DONE
+
 package com.github.JamesNorris.Flow;
 
 import org.bukkit.ChatColor;
@@ -14,7 +16,7 @@ public class FlowCommand implements CommandExecutor {
 	}
  
 		@Override
-		public boolean onCommand(CommandSender fixer, Command fix, String commandLabel, String[] args){
+		public boolean onCommand(CommandSender fixer, Command fix, String flowcommandLabel, String[] args){
 			if(fix.getName().equalsIgnoreCase("flow fix")){ 
 				fixer.sendMessage(ChatColor.BLUE + "Fixing server flow...");
 				return true;

@@ -7,20 +7,20 @@ import org.bukkit.event.HandlerList;
 import org.bukkit.event.block.BlockEvent;
 
 		public class FlowFixEffect extends BlockEvent implements Cancellable{//BlockFromToEvent
-			private static final HandlerList handlers = new HandlerList();
+			private static final HandlerList fixhandlers = new HandlerList();
 			protected Block to;
 			protected BlockFace face;
-			protected boolean cancel;
-			public FlowFixEffect(final Block block, final BlockFace face){
-				super(block);
+			protected boolean cancelfix;
+			public FlowFixEffect(final Block source, final BlockFace face){
+				super(source);
 				this.face = face;
-				this.cancel = false;
+				this.cancelfix = false;
 			}
-			public FlowFixEffect(final Block block, final Block toBlock){
-				super(block);
+			public FlowFixEffect(final Block source, final Block toBlock){
+				super(source);
 				this.to = toBlock;
 				this.face = BlockFace.SELF;
-				this.cancel = false;
+				this.cancelfix = false;
 			}
 			public BlockFace getFace(){
 				return face;
@@ -32,17 +32,17 @@ import org.bukkit.event.block.BlockEvent;
 				return to;
 			}
 			public boolean isCancelled() {
-				return cancel;
+				return cancelfix;
 			}
-			public void setCancelled(boolean cancel) {
-				this.cancel = cancel;	
+			public void setCancelled(boolean canceleffect) {
+				this.cancelfix = canceleffect;	
 			}
 			@Override
 			public HandlerList getHandlers() {
-				return handlers;
+				return fixhandlers;
 			}
 			public static HandlerList getHandlerList(){
-				return handlers;
+				return fixhandlers;
 			}
 		
 		}

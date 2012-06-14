@@ -20,7 +20,7 @@ public class Flow extends JavaPlugin {
 		log.info("Flow has been enabled.");
 	}
 		
-		public boolean onCommand(CommandSender info, Command inf, String commandLabel, String[] args){
+		public boolean onCommand(CommandSender info, Command inf, String flowLabel, String[] args){
 			if(inf.getName().equalsIgnoreCase("flow info")){ 
 				info.sendMessage(ChatColor.BLUE + "Flow is a lightweight plugin that helps keep water from forming into streams. Flow changes some flowing water into water spawn blocks during downfall.");
 				return true;
