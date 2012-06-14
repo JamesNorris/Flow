@@ -1,0 +1,23 @@
+name: Flow
+main: Flow.Flow
+version: 1.0.0
+commands:
+   flow info:
+      description: Shows info on Flow.
+      usage: /flow info
+      permission: flow.info
+      permission-message: You don't have permission to use this command!
+   flow fix:
+      description: Fixes water without rain.
+      usage: /flow fix
+      permission: flow.fix
+      permission-message: You don't have permission to use this command!
+permissions:
+    flow.info
+        description: Allows player to use "/flow info"
+        children:
+            flow.info: true
+    flow.fix:
+        description: Allows player to use "/flow fix"
+        children:
+            flow.fix: false
