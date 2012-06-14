@@ -1,3 +1,5 @@
+//THIS IS THE CLASS FOR THE FIX EFFECT
+
 package com.github.JamesNorris.Flow;
 
 import org.bukkit.block.Block;
@@ -8,7 +10,7 @@ import org.bukkit.event.block.BlockEvent;
 
 		public class FlowFixEffect extends BlockEvent implements Cancellable{//BlockFromToEvent
 			private static final HandlerList fixhandlers = new HandlerList();
-			protected Block to;
+			protected Block fixblock;
 			protected BlockFace face;
 			protected boolean cancelfix;
 			public FlowFixEffect(final Block source, final BlockFace face){
@@ -18,7 +20,7 @@ import org.bukkit.event.block.BlockEvent;
 			}
 			public FlowFixEffect(final Block source, final Block toBlock){
 				super(source);
-				this.to = toBlock;
+				this.fixblock = toBlock;
 				this.face = BlockFace.SELF;
 				this.cancelfix = false;
 			}
@@ -26,10 +28,10 @@ import org.bukkit.event.block.BlockEvent;
 				return face;
 			}
 			public Block getToBlock(){
-				if (to == null){
-					to = block.getRelative(face);
+				if (fixblock == null){
+					fixblock = block.getRelative(face);
 				}
-				return to;
+				return fixblock;
 			}
 			public boolean isCancelled() {
 				return cancelfix;

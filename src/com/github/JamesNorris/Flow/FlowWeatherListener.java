@@ -1,3 +1,5 @@
+//THIS IS THE CLASS THAT REACTS TO RAIN
+
 package com.github.JamesNorris.Flow;
 
 import org.bukkit.World;
