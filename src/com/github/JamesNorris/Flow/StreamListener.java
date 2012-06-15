@@ -7,7 +7,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.event.block.BlockFromToEvent;
 
-public class StreamListener {
+public class StreamListener { 
 	
 	public void onBlockFromTo(BlockFromToEvent finder, Location getworld){
 		
