@@ -3,6 +3,7 @@
 
 package com.github.JamesNorris.Flow;
 
+import org.bukkit.command.CommandExecutor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -13,14 +14,21 @@ import java.io.InputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Flow extends JavaPlugin {
+public class Flow extends JavaPlugin implements CommandExecutor {
 	private FileConfiguration config = null;//Trying to create a config.yml... no success yet.
 	private File flowConfigFile = null;
 	Logger log;
+	
+	private FlowCommandFix flowFixExecutor;
+	private FlowCommand flowExecutor;
 	@Override
 	public void onEnable(){
-		log = this.getLogger();
-		log.info("Flow has been enabled.");
+		
+		flowFixExecutor = new FlowCommandFix(this);
+		getCommand("flowfix").setExecutor(flowFixExecutor);
+		flowExecutor = new FlowCommand(this);
+		getCommand("flow").setExecutor(flowExecutor);
+		
 		    if (flowConfigFile == null) {
 		    flowConfigFile = new File(getDataFolder(), "config.yml");
 		    }
