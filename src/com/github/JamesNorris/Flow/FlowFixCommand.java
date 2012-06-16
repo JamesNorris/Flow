@@ -1,29 +1,27 @@
-//MUST BE PUT INTO FLOWFIXEFFECT WHEN DONE
-//THIS IS THE CLASS FOR THE FIX COMMAND
-
 package com.github.JamesNorris.Flow;
 
-import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-public class FlowCommand extends JavaPlugin implements CommandExecutor{
+public class FlowFixCommand implements CommandExecutor {
+	
+	//TODO below is the command, which should call out the onBlockFromTo event
 	private Flow plugin;
-	public FlowCommand(Flow plugin){
-		this.setPluginCommand(plugin);
+
+	public FlowFixCommand(Flow plugin) {
+		this.setPlugin(plugin);
 	}
 
-	@Override
 	public boolean onCommand(CommandSender flowplayer, Command inf, String flowLabel, String[] args){
 		if (args.length > 1) {
 			flowplayer.sendMessage(ChatColor.RED + "Too many arguments!");
 			return false;
 		}else{
-			if(flowplayer.hasPermission("flow.info")) {
-				if(inf.getName().equalsIgnoreCase("flow")){
-					flowplayer.sendMessage(ChatColor.BLUE + "Plugin: Flow, Created by: JamesNorris, Use - To fix streams.");
+			if(flowplayer.hasPermission("flow.fix")) {
+				if(inf.getName().equalsIgnoreCase("flowfix")){
+					flowplayer.sendMessage(ChatColor.BLUE + "Flow is now fixing your water!");
 					return true;
 				}
 			}else{
@@ -33,11 +31,12 @@ public class FlowCommand extends JavaPlugin implements CommandExecutor{
 		}
 	}
 
-	public Flow getPluginCommand() {
+	public Flow getPlugin() {
 		return plugin;
 	}
 
-	public void setPluginCommand(Flow plugin) {
+	public void setPlugin(Flow plugin) {
 		this.plugin = plugin;
 	}
+
 }

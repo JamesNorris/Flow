@@ -1,6 +1,7 @@
 name: Flow
 main: com.github.JamesNorris.Flow.Flow
-version: 1.0.7
+version: 1.0.8
+prefix: Flow
 commands:
    flow:
       description: Shows info.
@@ -8,7 +9,7 @@ commands:
       permission: flow.info
       permission-message: You don't have permission.
    flowfix:
-      description: Fixes water.
+      description: Fixes water manually.
       usage: Are you sure you didn't mean "/flowfix"?
       permission: flow.fix
       permission-message: You don't have permission.
