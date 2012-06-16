@@ -17,6 +17,10 @@ public class FlowCommand extends JavaPlugin implements CommandExecutor{
 	
 	@Override
 	public boolean onCommand(CommandSender flowplayer, Command inf, String flowLabel, String[] args){
+		if (args.length > 1) {
+	        flowplayer.sendMessage(ChatColor.RED + "Too many arguments!");
+	        return false;
+		}else{
 		if(flowplayer.hasPermission("flow.info")) {
 			if(inf.getName().equalsIgnoreCase("flow")){
 				flowplayer.sendMessage(ChatColor.BLUE + "Plugin: Flow, Created by: JamesNorris, Use - To fix streams.");
@@ -26,6 +30,7 @@ public class FlowCommand extends JavaPlugin implements CommandExecutor{
 			return false;
 	}
 		return false;
+	}
 	}
 
 	public Flow getPluginCommand() {

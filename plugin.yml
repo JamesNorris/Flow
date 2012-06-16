@@ -1,15 +1,15 @@
 name: Flow
 main: com.github.JamesNorris.Flow.Flow
-version: 1.0.5
+version: 1.0.7
 commands:
    flow:
       description: Shows info.
-      usage: /flow
+      usage: Are you sure you didn't mean "/flow"?
       permission: flow.info
       permission-message: You don't have permission.
    flowfix:
       description: Fixes water.
-      usage: /flowfix
+      usage: Are you sure you didn't mean "/flowfix"?
       permission: flow.fix
       permission-message: You don't have permission.
 permissions:

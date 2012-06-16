@@ -1,0 +1,6 @@
+/////////////////////////////////////Flow/////////////////////////////////////
+//the version of flow (DO NOT CHANGE)
+version: 1.0.6
+
+//choose whether or not to allow lava to be fixed.
+enableLava: false

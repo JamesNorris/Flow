@@ -4,60 +4,35 @@
 package com.github.JamesNorris.Flow;
 
 import org.bukkit.command.CommandExecutor;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Flow extends JavaPlugin implements CommandExecutor {
-	private FileConfiguration config = null;//Trying to create a config.yml... no success yet.
-	private File flowConfigFile = null;
 	Logger log;
-	
-	private FlowCommandFix flowFixExecutor;
+	private StreamFinderCommand flowFixExecutor;
 	private FlowCommand flowExecutor;
 	@Override
 	public void onEnable(){
 		
-		flowFixExecutor = new FlowCommandFix(this);
+		getConfig().options().copyDefaults(true);
+		
+		String version = "v1.0.7 TEST VERSION"; //TODO set this every time there's an update!
+		this.getConfig().set("version", version); //setting config.yml version to: <version>
+		
+		this.getConfig().set("enable", true); //setting config.yml enable to <true/false>
+		
+		//this.getFlowConfig().set("enableLava", true); //TODO set lava to...
+		
+		this.saveConfig();
+		
+		flowFixExecutor = new StreamFinderCommand(this);
 		getCommand("flowfix").setExecutor(flowFixExecutor);
+		
 		flowExecutor = new FlowCommand(this);
 		getCommand("flow").setExecutor(flowExecutor);
-		
-		    if (flowConfigFile == null) {
-		    flowConfigFile = new File(getDataFolder(), "config.yml");
-		    }
-		    config = YamlConfiguration.loadConfiguration(flowConfigFile);
-		 
-		    InputStream defConfigStream = getResource("config.yml");
-		    if (defConfigStream != null) {
-		        YamlConfiguration defConfig = YamlConfiguration.loadConfiguration(defConfigStream);
-		        config.setDefaults(defConfig);
-		    }
-		}
-
-		public FileConfiguration getconfig() {
-		    if (config == null) {
-		        onEnable();
-		    }
-		    return config;
-		}
-
-		public void saveconfig() {
-		    if (config == null || flowConfigFile == null) {
-		    return;
-		    }
-		    try {
-		        config.save(flowConfigFile);
-		    } catch (IOException ex) {
-		        Logger.getLogger(JavaPlugin.class.getName()).log(Level.SEVERE, "Could not save config to " + flowConfigFile, ex);
-		    }
-		}
+	}
+	
 	public void onDisable(){
 		log.info("Flow has been disabled.");
 	}
