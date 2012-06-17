@@ -10,7 +10,7 @@ commands:
       permission-message: You don't have permission.
    flowfix:
       description: Fixes water manually.
-      usage: Are you sure you didn't mean "/flowfix"?
+      usage: Are you sure you didn't mean "/flowfix <#>"?
       permission: flow.fix
       permission-message: You don't have permission.
 permissions:

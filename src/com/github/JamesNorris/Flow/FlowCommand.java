@@ -23,11 +23,14 @@ public class FlowCommand extends JavaPlugin implements CommandExecutor{
 		}else{
 			if(flowplayer.hasPermission("flow.info")) {
 				if(inf.getName().equalsIgnoreCase("flow")){
-					flowplayer.sendMessage(ChatColor.BLUE + "Plugin: Flow, Created by: JamesNorris, Use - To fix streams.");
+					flowplayer.sendMessage(ChatColor.BLUE + "------------Flow Info------------");
+					flowplayer.sendMessage(ChatColor.AQUA + "Plugin: Flow");
+					flowplayer.sendMessage(ChatColor.BLUE + "Created by: JamesNorris");
+					flowplayer.sendMessage(ChatColor.AQUA + "Use: To fix streams.");
+					flowplayer.sendMessage(ChatColor.BLUE + "Commands: '/flow' and '/flowfix'");
+					flowplayer.sendMessage(ChatColor.AQUA + "--------------------------------");
 					return true;
 				}
-			}else{
-				return false;
 			}
 			return false;
 		}
@@ -41,3 +44,4 @@ public class FlowCommand extends JavaPlugin implements CommandExecutor{
 		this.plugin = plugin;
 	}
 }
+

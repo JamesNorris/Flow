@@ -10,43 +10,48 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Flow extends JavaPlugin implements CommandExecutor {
 
-	private FlowFixCommand flowFixExecutor;
+	private FixCommand flowFixExecutor;
 	private FlowCommand flowExecutor;
 	private File config;
-	private static Logger log = Logger.getLogger("Flow");
+	private static Logger log = Logger.getLogger("Minecraft");
 	@Override
 	public void onEnable(){
 
-		Logger.getLogger(JavaPlugin.class.getName()).log(Level.WARNING, "Flow is currently experimental. Please backup ALL files!");
-
 		if(config == null){
 			config = new File(getDataFolder(), "config.yml");
-					String version = "v1.0.8 TEST VERSION"; //TODO set this every time there's an update! ex. vX.X.X
-					this.getConfig().set("version", version); //setting config.yml version to: <version>
 
-					getConfig().options().copyDefaults(true);
+			log.info("Loading config.yml...");
 
-					this.getConfig().addDefault("enable", true); //TODO enable this plugin <true/false>
+			String version = "v1.0.8 TEST VERSION"; //TODO set this every time there's an update! ex. vX.X.X
+			this.getConfig().set("version", version); //setting config.yml version to: <version>
 
-					//this.getFlowConfig().set("enableLava", true); //TODO set lava to...
+			getConfig().options().copyDefaults(true);
 
-					this.saveConfig();
-				}else{
-					Logger.getLogger(JavaPlugin.class.getName()).log(Level.SEVERE, "configUpdating is not set to enable or disable. Configuration cannot be loaded!");
-				}
+			String enablePlugin = "true";
+			this.getConfig().addDefault("enabled", enablePlugin);
+
+			//this.getFlowConfig().set("enableLava", true); //TODO enable lava to be fixed
+
+			this.saveConfig();
+		}
+
+		log.warning("Flow is currently experimental. Please backup ALL files!");
 
 
-		flowFixExecutor = new FlowFixCommand(this);
-		getCommand("flow").setExecutor(flowFixExecutor);
-		
+		flowFixExecutor = new FixCommand(this);
+		getCommand("flowfix").setExecutor(flowFixExecutor);
+
 		flowExecutor = new FlowCommand(this);
 		getCommand("flow").setExecutor(flowExecutor);
 	}
+
+
+
+
 
 	public void onDisable(){
 		log.info("Flow has been disabled.");
