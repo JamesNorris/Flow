@@ -13,11 +13,19 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 
 public class FixCommand implements CommandExecutor {
-	
+
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public boolean onCommand(CommandSender flowplayer, Command cmd, String commandLabel, String[] args){
 		if (cmd.getName().equalsIgnoreCase("flowfix") && flowplayer.hasPermission("flow.fix")){
-                    flowplayer.sendMessage(ChatColor.AQUA + "Flow is now fixing your water!");
+			if (args.length > 1) {
+				flowplayer.sendMessage(ChatColor.RED + "Too many arguments!");
+				return false;
+			}else{
+				if (args.length < 1) {
+					flowplayer.sendMessage(ChatColor.RED + "Not enough arguments!");
+					return false;
+				}else{
+					flowplayer.sendMessage(ChatColor.AQUA + "Flow is now fixing your water!");
 					Player p = (Player)flowplayer;
 					World world = p.getWorld();
 					Location location = new Location(p.getWorld(), p.getLocation().getX(), p.getLocation().getBlockY() - 1, p.getLocation().getBlockZ());
@@ -47,6 +55,8 @@ public class FixCommand implements CommandExecutor {
 						}
 					}
 					return true;
+				}
+			}
 		}
 		return false;
 	}

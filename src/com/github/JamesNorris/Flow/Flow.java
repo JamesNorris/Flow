@@ -26,7 +26,7 @@ public class Flow extends JavaPlugin implements CommandExecutor {
 
 			log.info("Loading config.yml...");
 
-			String version = "v1.0.8 TEST VERSION"; //TODO set this every time there's an update! ex. vX.X.X
+			String version = "v1.0.9 Development"; //TODO set this every time there's an update! ex. vX.X.X
 			this.getConfig().set("version", version); //setting config.yml version to: <version>
 
 			getConfig().options().copyDefaults(true);
