@@ -23,11 +23,11 @@ public class FlowCommand extends JavaPlugin implements CommandExecutor{
 		}else{
 			if(flowplayer.hasPermission("flow.info")) {
 				if(inf.getName().equalsIgnoreCase("flow")){
-					flowplayer.sendMessage(ChatColor.BLUE + "------------Flow Info------------");
+					flowplayer.sendMessage(ChatColor.AQUA + "------------Flow Info------------");
 					flowplayer.sendMessage(ChatColor.AQUA + "Plugin: Flow");
-					flowplayer.sendMessage(ChatColor.BLUE + "Created by: JamesNorris");
+					flowplayer.sendMessage(ChatColor.AQUA + "Created by: JamesNorris");
 					flowplayer.sendMessage(ChatColor.AQUA + "Use: To fix streams.");
-					flowplayer.sendMessage(ChatColor.BLUE + "Commands: '/flow' and '/flowfix'");
+					flowplayer.sendMessage(ChatColor.AQUA + "Commands: '/flow' and '/flowfix'");
 					flowplayer.sendMessage(ChatColor.AQUA + "--------------------------------");
 					return true;
 				}

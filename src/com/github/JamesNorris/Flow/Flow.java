@@ -14,10 +14,12 @@ import java.util.logging.Logger;
 
 public class Flow extends JavaPlugin implements CommandExecutor {
 
+
 	private FixCommand flowFixExecutor;
 	private FlowCommand flowExecutor;
 	private File config;
 	private static Logger log = Logger.getLogger("Minecraft");
+
 	@Override
 	public void onEnable(){
 
@@ -26,20 +28,25 @@ public class Flow extends JavaPlugin implements CommandExecutor {
 
 			log.info("Loading config.yml...");
 
-			String version = "v1.0.9 Development"; //TODO set this every time there's an update! ex. vX.X.X
+
+			String version = "v1.1.0 Development"; //TODO set this every time there's an update! ex. vX.X.X
 			this.getConfig().set("version", version); //setting config.yml version to: <version>
 
 			getConfig().options().copyDefaults(true);
 
-			String enablePlugin = "true";
-			this.getConfig().addDefault("enabled", enablePlugin);
+			this.getConfig().addDefault("enabled", true);
 
-			//this.getFlowConfig().set("enableLava", true); //TODO enable lava to be fixed
+			String enableLava = "true";
+			this.getConfig().addDefault("enableLava", enableLava); //TODO enable lava to be fixed (see FixCommand.java)
 
 			this.saveConfig();
 		}
 
-		log.warning("Flow is currently experimental. Please backup ALL files!");
+		if(getConfig().getBoolean("enabled") == false){
+			log.warning("Flow has been disabled in the config! Check the config.yml to change this!");
+		}
+
+		log.warning("Flow is currently a development version. Make sure to backup all files!");
 
 
 		flowFixExecutor = new FixCommand(this);
