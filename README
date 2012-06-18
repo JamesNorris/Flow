@@ -1,10 +1,9 @@
 ----------------------FLOW README----------------------
-WARNING - THIS PLUGIN DOES NOT YET WORK. PLEASE DO NOT FILE ISSUES UNTIL A WORKING VERSION IS IN ORDER.
 WARNING - THIS PLUGIN IS IN DEVELOPMENT STAGES. PLEASE KEEP BACKUPS OF ALL SERVER FILES!
 
 
 HOW?
-This plugin was created by JamesNorris to help fix water streams. It works to create a new water source block, next to 2 old water source blocks, as long as there is a solid block underneath it. This plugin can also be used manually, but defaults to automatic. (This is editable in the config)
+This plugin was created by JamesNorris to help fix water streams. It works to change stream blocks into water source blocks, in a given radius.
 
 WHY?
 As far as I can tell, there are currently no plugins that fix streams COMPLETELY (not trying to pick on anyone, in fact I thank him for this idea... (BergerKillers' "StreamRemover")). This plugin aims to achieve that goal, and I will not stop working on this plugin until I can somewhat achieve that goal.
@@ -12,4 +11,4 @@ As far as I can tell, there are currently no plugins that fix streams COMPLETELY
 COMMANDS:
 
 /flow - flow.info - SHOW FLOW INFO
-/flowfix - flow.fix - FIX WATER MANUALLY (Radius can be set in config)
+/flowfix <#> - flow.fix - FIX WATER MANUALLY (Radius is set by #)
