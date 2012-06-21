@@ -1,6 +1,6 @@
 name: Flow
 main: com.github.JamesNorris.Flow.Flow
-version: 1.0.9
+version: 1.1.2
 prefix: Flow
 commands:
    flow:
@@ -13,9 +13,18 @@ commands:
       usage: Are you sure you didn't mean "/flowfix <#>"?
       permission: flow.fix
       permission-message: You don't have permission.
+   flowset:
+      description: Toggles values in the config.
+      usage: Are you sure you didn't mean "/flowset <value>"?
+      permission: flow.set
+      permission-message: You don't have permission.
 permissions:
     flow.info:
         description: Allows user to show info.
+        default: op
     flow.fix:
         description: Allows user to fix water.
+        default: op
+    flow.set:
+        description: Allows user to toggle values in the config.
         default: op

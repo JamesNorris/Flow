@@ -13,53 +13,38 @@ import java.io.File;
 import java.util.logging.Logger;
 
 public class Flow extends JavaPlugin implements CommandExecutor {
-
-
 	private FixCommand flowFixExecutor;
 	private FlowCommand flowExecutor;
+	private configCommands configExecutor;
 	private File config;
 	private static Logger log = Logger.getLogger("Minecraft");
-
+	int configVersion = 0;
+	int configVersionNumber = 3; //TODO add 1 every time there's an update to the config!
+	String version = "v1.1.2"; //TODO set this every time there's an update! ex. vX.X.X
 	@Override
 	public void onEnable(){
-
-		if(config == null){
+		this.getConfig().set("configVersion", configVersionNumber);
+		if(config == null || configVersion != configVersionNumber){
 			config = new File(getDataFolder(), "config.yml");
-
 			log.info("Loading config.yml...");
-
-
-			String version = "v1.1.0 Development"; //TODO set this every time there's an update! ex. vX.X.X
-			this.getConfig().set("version", version); //setting config.yml version to: <version>
-
+			this.getConfig().set("version", version);
 			getConfig().options().copyDefaults(true);
-
 			this.getConfig().addDefault("enabled", true);
-
-			String enableLava = "true";
-			this.getConfig().addDefault("enableLava", enableLava); //TODO enable lava to be fixed (see FixCommand.java)
-
-			this.saveConfig();
-		}
-
+			this.getConfig().addDefault("enableLava", true);
+			this.getConfig().addDefault("enableWater", true);
+			this.getConfig().addDefault("fixBelow", true);
+		}	
 		if(getConfig().getBoolean("enabled") == false){
 			log.warning("Flow has been disabled in the config! Check the config.yml to change this!");
+			this.setEnabled(false);
 		}
-
-		log.warning("Flow is currently a development version. Make sure to backup all files!");
-
-
 		flowFixExecutor = new FixCommand(this);
 		getCommand("flowfix").setExecutor(flowFixExecutor);
-
 		flowExecutor = new FlowCommand(this);
 		getCommand("flow").setExecutor(flowExecutor);
+		configExecutor = new configCommands(this);
+		getCommand("flowset").setExecutor(configExecutor);
 	}
-
-
-
-
-
 	public void onDisable(){
 		log.info("Flow has been disabled.");
 		this.saveConfig();

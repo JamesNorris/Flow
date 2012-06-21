@@ -14,7 +14,6 @@ public class FlowCommand extends JavaPlugin implements CommandExecutor{
 	public FlowCommand(Flow plugin){
 		this.setPluginCommand(plugin);
 	}
-
 	@Override
 	public boolean onCommand(CommandSender flowplayer, Command inf, String flowLabel, String[] args){
 		if (args.length > 1) {
@@ -35,11 +34,9 @@ public class FlowCommand extends JavaPlugin implements CommandExecutor{
 			return false;
 		}
 	}
-
 	public Flow getPluginCommand() {
 		return plugin;
 	}
-
 	public void setPluginCommand(Flow plugin) {
 		this.plugin = plugin;
 	}
