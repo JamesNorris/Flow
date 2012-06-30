@@ -2,13 +2,12 @@
 WARNING - THIS PLUGIN IS IN DEVELOPMENT STAGES. PLEASE KEEP BACKUPS OF ALL SERVER FILES!
 
 
-HOW?
-This plugin was created by JamesNorris to help fix water streams. It works to change stream blocks into water source blocks, in a given radius.
+WHAT IT IS - Flow is a liquid-control plugin. Flow is dedicated to combining all liquid control plugins into 1 plugin that has the ability to do what all of the other plugins do. The main goal of Flow is to keep streams from forming, then fix old streams with a command. As of v1.1.1, there is no code to prevent streams from forming, but it is a definite future update. I plan to be very dedicated to this plugin, and I hope Flow saves Ops the amount of time that I took to make it! 
 
-WHY?
-As far as I can tell, there are currently no plugins that fix streams COMPLETELY (not trying to pick on anyone, in fact I thank him for this idea... (BergerKillers' "StreamRemover")). This plugin aims to achieve that goal, and I will not stop working on this plugin until I can somewhat achieve that goal.
+HOW IT WORKS - This plugin looks within the specified radius, and changes all stream blocks in that area to source blocks. In the future it is supposed to have many new features, all with the ability to be enabled/disabled in the config. Some planned features are: buckets filling slowly in rain, commands for changing the config through the player, and automatic fixes for water. If ignoreFalls (v1.1.1) is enabled in the config, the plugin will only check blocks within a circular radius around the players feet. Without this option set, Flow checks a spherical radius, which may be beneficial if a player is underwater when performing the command, but can cause waterfalls to become twice as large. A new feature as of v1.1.3 is stream preventing. This will fix around 90% of streams in large water sources. This also ignores waterfalls, and cancels if a block 2 blocks away is not a water block. Stream preventing is currently in testing, so please KEEP BACKUPS!
 
 COMMANDS:
 
-/flow - flow.info - SHOW FLOW INFO
-/flowfix <#> - flow.fix - FIX WATER MANUALLY (Radius is set by #)
+/flow <#> - flow.info - Shows # page of help.
+/flowfix <#> - flow.fix - Fix water within # blocks.
+/flowset <config value> - toggles a boolean in the config.
