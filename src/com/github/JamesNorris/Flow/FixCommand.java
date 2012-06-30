@@ -16,8 +16,11 @@ public class FixCommand implements CommandExecutor {
 
 	private static Logger log = Logger.getLogger("Minecraft");
 
-	public boolean onCommand(final CommandSender flowplayer, Command cmd, String commandLabel, String[] args) {
-		if (!cmd.getName().equalsIgnoreCase("flowfix") || !flowplayer.hasPermission("flow.fix")) {
+	@Override
+	public boolean onCommand(final CommandSender flowplayer, final Command cmd,
+			final String commandLabel, final String[] args) {
+		if (!cmd.getName().equalsIgnoreCase("flowfix")
+				|| !flowplayer.hasPermission("flow.fix")) {
 			return false;
 		}
 		if (args.length > 1) {
@@ -28,36 +31,51 @@ public class FixCommand implements CommandExecutor {
 			flowplayer.sendMessage(ChatColor.RED + "Not enough arguments!");
 			return false;
 		}
-		Player player = (Player) flowplayer;
+		final Player player = (Player) flowplayer;
 		final World world = player.getWorld();
-		int radius = Math.abs(Integer.parseInt(args[0]));
-		flowplayer.sendMessage(ChatColor.AQUA + "Flow is now fixing liquids within a radius of " + radius + " blocks!");
+		final int radius = Math.abs(Integer.parseInt(args[0]));
+		final int maxRadius = 30;
+		if (radius > maxRadius) {
+			flowplayer.sendMessage("Over the max fix limit. The limit is "
+					+ maxRadius);
+			return false;
+		}
+		flowplayer.sendMessage(ChatColor.AQUA
+				+ "Flow is now fixing liquids within a radius of " + radius
+				+ " blocks!");
 		log.info("Player " + player + " has run /flowfix!");
-		Block block = new Location(player.getWorld(), player.getLocation().getX(), player.getLocation().getY() - 1, player.getLocation().getZ()).getBlock();
-		int x = block.getX();
-		int y = block.getY();
-		int z = block.getZ();
-		int minX = x - radius;
-		int minY = y - radius;
-		int minZ = z - radius;
-		int maxX = x + radius;
-		int maxY = y + radius;
-		int maxZ = z + radius;
+		final Block block = new Location(player.getWorld(), player
+				.getLocation().getX(), player.getLocation().getY() - 1, player
+				.getLocation().getZ()).getBlock();
+		final int x = block.getX();
+		final int y = block.getY();
+		final int z = block.getZ();
+		final int minX = x - radius;
+		final int minY = y - radius;
+		final int minZ = z - radius;
+		final int maxX = x + radius;
+		final int maxY = y + radius;
+		final int maxZ = z + radius;
 		for (int counterX = minX; counterX <= maxX; counterX++) {
-			for (int counterY = minY; counterY <= maxY;counterY++) {
+			for (int counterY = minY; counterY <= maxY; counterY++) {
 				for (int counterZ = minZ; counterZ <= maxZ; counterZ++) {
-					Block stream = world.getBlockAt(counterX,counterY,counterZ);
-					if(plugin.getConfig().getBoolean("enableWater")) {
+					final Block stream = world.getBlockAt(counterX, counterY,
+							counterZ);
+					if (plugin.getConfig().getBoolean("enableWater") == true) {
 						if (stream.getTypeId() == 9) {
-							if(stream.getY() != y && plugin.getConfig().getBoolean("fixBelow") == true){
+							if (stream.getY() > y
+									&& plugin.getConfig()
+											.getBoolean("fixBelow") == true) {
 								break;
 							}
 							stream.setType(Material.STATIONARY_WATER);
 						}
 					}
-					if(plugin.getConfig().getBoolean("enableLava")) {
+					if (plugin.getConfig().getBoolean("enableLava") == true) {
 						if (stream.getTypeId() == 11) {
-							if(stream.getY() != y && plugin.getConfig().getBoolean("fixBelow") == true){
+							if (stream.getY() > y
+									&& plugin.getConfig()
+											.getBoolean("fixBelow") == true) {
 								break;
 							}
 							stream.setType(Material.STATIONARY_LAVA);
@@ -68,15 +86,19 @@ public class FixCommand implements CommandExecutor {
 		}
 		return true;
 	}
+
 	private Flow plugin;
-	public FixCommand(Flow instance) {
+
+	public FixCommand(final Flow instance) {
 		plugin = instance;
 		this.setPlugin(plugin);
 	}
+
 	public Flow getPlugin() {
 		return plugin;
 	}
-	public void setPlugin(Flow plugin) {
+
+	public void setPlugin(final Flow plugin) {
 		this.plugin = plugin;
 	}
 }
