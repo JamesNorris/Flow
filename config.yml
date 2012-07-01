@@ -1,11 +1,31 @@
-/////////////////////////////////////Flow/////////////////////////////////////
-# The version of flow (DO NOT CHANGE)
-version: 1.1.0 TEST VERSION
+#FLOW CONFIG.YML
+#FOR: BUKKIT PLUGIN - "FLOW"
+#CREATOR: JAMESNORRIS
 
-
-# Enable "Flow"?
 enabled: true
+#Whether or not the plugin should be loaded on startup. 
+#Once set to disabled cannot change to enabled until server is stopped. 
+#It is recommended that you use a plugin manager for the time being.
 
-
-# Allow lava to be fixed?
 enableLava: false
+#Whether or not to allow lava to be fixed.
+
+enableWater: true
+#Whether or not to allow water to be fixed.
+
+fixBelow: true
+#Only fix a semi-circle below your radius. 
+#Is useful for preventing waterfalls from being fixed.
+
+nearFix: false
+#Allow auto-fixing of sources if they are surrounded by 2 or more source blocks. 
+#By default, this is set to false, because it is a very new feature. 
+#If you are going to use this, make sure to backup all files!
+
+configCommands: false
+#Allow the use of config-toggling commands.
+#Config commands will remove all comments from this config,
+#therefore, it is recommended you leave this false.
+
+useBucketPerms: true
+#Use built-in Flow permissions for buckets.

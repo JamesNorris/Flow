@@ -13,9 +13,9 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class FixCommand implements CommandExecutor {
-
+	
 	private static Logger log = Logger.getLogger("Minecraft");
-
+	
 	@Override
 	public boolean onCommand(final CommandSender flowplayer, final Command cmd,
 			final String commandLabel, final String[] args) {
@@ -86,18 +86,18 @@ public class FixCommand implements CommandExecutor {
 		}
 		return true;
 	}
-
+	
 	private Flow plugin;
-
+	
 	public FixCommand(final Flow instance) {
 		plugin = instance;
-		this.setPlugin(plugin);
+		setPlugin(plugin);
 	}
-
+	
 	public Flow getPlugin() {
 		return plugin;
 	}
-
+	
 	public void setPlugin(final Flow plugin) {
 		this.plugin = plugin;
 	}

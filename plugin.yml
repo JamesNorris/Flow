@@ -1,6 +1,6 @@
 name: Flow
 main: com.github.JamesNorris.Flow.Flow
-version: 1.1.5
+version: 1.1.6
 prefix: Flow
 commands:
    flow:
@@ -27,4 +27,13 @@ permissions:
         default: op
     flow.set:
         description: Allows user to toggle values in the config.
+        default: op
+    flow.bucket.*:
+        description: Allows user to use all buckets.
+        default: op
+    flow.waterbucket:
+        description: Allows user to use water buckets.
+        default: op
+    flow.lavabucket:
+        description: Allows user to use lava buckets.
         default: op

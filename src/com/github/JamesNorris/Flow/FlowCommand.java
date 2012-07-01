@@ -11,11 +11,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class FlowCommand extends JavaPlugin implements CommandExecutor {
 	private Flow plugin;
-
+	
 	public FlowCommand(final Flow plugin) {
-		this.setPluginCommand(plugin);
+		setPluginCommand(plugin);
 	}
-
+	
 	@Override
 	public boolean onCommand(final CommandSender flowplayer, final Command inf,
 			final String flowLabel, final String[] args) {
@@ -62,14 +62,14 @@ public class FlowCommand extends JavaPlugin implements CommandExecutor {
 				}
 			}
 		}
-
+		
 		return false;
 	}
-
+	
 	public Flow getPluginCommand() {
 		return plugin;
 	}
-
+	
 	public void setPluginCommand(final Flow plugin) {
 		this.plugin = plugin;
 	}
