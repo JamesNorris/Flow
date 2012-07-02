@@ -29,3 +29,11 @@ configCommands: false
 
 useBucketPerms: true
 #Use built-in Flow permissions for buckets.
+
+rainFill: true
+#Allow buckets in a players' inventory to be filled after
+#a certain time that the player is in the rain.
+
+rainFillDelay: 60
+#The time in seconds that you want a player to be
+#in the rain, before buckets are filled.

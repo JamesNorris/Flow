@@ -10,20 +10,9 @@ import org.bukkit.command.CommandSender;
 public class ConfigCommands implements CommandExecutor {
 	private static Logger log = Logger.getLogger("Minecraft");
 	private Flow plugin;
-	
 	public ConfigCommands(final Flow instance) {
 		plugin = instance;
-		setPlugin(plugin);
 	}
-	
-	public Flow getPlugin() {
-		return plugin;
-	}
-	
-	public void setPlugin(final Flow plugin) {
-		this.plugin = plugin;
-	}
-	
 	@Override
 	public boolean onCommand(final CommandSender flowplayer, final Command cmd,
 			final String commandLabel, final String[] args) {

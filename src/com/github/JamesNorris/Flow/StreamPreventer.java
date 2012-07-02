@@ -8,6 +8,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockFromToEvent;
 
 public class StreamPreventer implements Listener {
+	public int flowcounter;
 	private Flow plugin;
 	public StreamPreventer(final Flow instance) { // connecting this class to the main class
 		plugin = instance;
@@ -35,6 +36,7 @@ public class StreamPreventer implements Listener {
 								final int streamtype = stream.getTypeId();
 								if (streamtype == 8) {
 									event.getToBlock().setTypeId(sourcetype);
+									++Flow.flowFixCount;
 									event.setCancelled(true);
 									break;
 								}
@@ -45,6 +47,7 @@ public class StreamPreventer implements Listener {
 								final int streamtype = stream.getTypeId();
 								if (streamtype == 10) {
 									event.getToBlock().setTypeId(sourcetype);
+									++Flow.flowFixCount;
 									event.setCancelled(true);
 									break;
 								}

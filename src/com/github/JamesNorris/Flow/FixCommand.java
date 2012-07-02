@@ -13,12 +13,12 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class FixCommand implements CommandExecutor {
-	
 	private static Logger log = Logger.getLogger("Minecraft");
 	
 	@Override
 	public boolean onCommand(final CommandSender flowplayer, final Command cmd,
 			final String commandLabel, final String[] args) {
+		int FixCounter = 0;
 		if (!cmd.getName().equalsIgnoreCase("flowfix")
 				|| !flowplayer.hasPermission("flow.fix")) {
 			return false;
@@ -81,9 +81,28 @@ public class FixCommand implements CommandExecutor {
 							stream.setType(Material.STATIONARY_LAVA);
 						}
 					}
+					if (stream.getTypeId() == 11 && plugin.getConfig().getBoolean("enableLava") == true){
+						if (stream.getY() < y && plugin.getConfig().getBoolean("fixBelow") == true){
+							++Flow.flowFixCount;
+							++FixCounter;
+						}else{
+							++Flow.flowFixCount;
+							++FixCounter;
+						}
+					}
+					if (stream.getTypeId() == 9 && plugin.getConfig().getBoolean("enableLWater") == true){
+						if (stream.getY() < y && plugin.getConfig().getBoolean("fixBelow") == true){
+							++Flow.flowFixCount;
+							++FixCounter;
+						}else{
+							++Flow.flowFixCount;
+							++FixCounter;
+						}
+					}
 				}
 			}
 		}
+		flowplayer.sendMessage("Flow fixed " + FixCounter + " blocks!");
 		return true;
 	}
 	

@@ -8,18 +8,15 @@ package com.github.JamesNorris.Flow;
 
 import java.io.File;
 import java.util.logging.Logger;
-import org.bukkit.command.CommandExecutor;
+
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
-// TODO create a class to add permissions for using water/lava/milk buckets
 // TODO use the same waterfall-avoiding technique that is used in StreamPreventer, in FixCommand
-// TODO tell how many blocks have been changed after /flowfix, and overall (at disable)
-// TODO make buckets fill slowly in the rain with configuration of enable and time
 // TODO AFTER ALL OF THIS IS COMPLETED, START A NEW PLUGIN, AND MAINTAIN THIS ONE!
 
-public class Flow extends JavaPlugin implements CommandExecutor, Listener {
+public class Flow extends JavaPlugin {
+	public static int flowFixCount;
 	File configFile;
 	FileConfiguration config;
 	private FixCommand flowFixExecutor;
@@ -28,9 +25,11 @@ public class Flow extends JavaPlugin implements CommandExecutor, Listener {
 	private static Logger log = Logger.getLogger("Minecraft");
 	@Override
 	public void onEnable() {
+		flowFixCount = 0;
 		File f = new File(this.getDataFolder(), "config.yml");
-		if(!f.exists())
+		if(!f.exists()){
 			this.saveDefaultConfig();
+		}
 		if (getConfig().getBoolean("enabled") == false) {
 			log.warning("Flow has been disabled in the config! Check the config.yml to change this!");
 			setEnabled(false);
@@ -46,8 +45,12 @@ public class Flow extends JavaPlugin implements CommandExecutor, Listener {
 		getCommand("flowset").setExecutor(configExecutor);
 		getServer().getPluginManager().registerEvents(new StreamPreventer(this), this);
 		getServer().getPluginManager().registerEvents(new BucketControl(this), this);
+		if (getConfig().getBoolean("rainFill") == true){
+			getServer().getScheduler().scheduleSyncRepeatingTask(this, new RainFill(this), 20, 20);
+		}
 	}
 	@Override
 	public void onDisable() {
+		log.info("Flow has fixed " + flowFixCount + " blocks this session!");
 	}
 }

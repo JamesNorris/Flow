@@ -11,11 +11,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class FlowCommand extends JavaPlugin implements CommandExecutor {
 	private Flow plugin;
-	
 	public FlowCommand(final Flow plugin) {
 		setPluginCommand(plugin);
 	}
-	
 	@Override
 	public boolean onCommand(final CommandSender flowplayer, final Command inf,
 			final String flowLabel, final String[] args) {
@@ -53,11 +51,22 @@ public class FlowCommand extends JavaPlugin implements CommandExecutor {
 								.sendMessage(ChatColor.AQUA
 										+ "/flowset <config value> = toggle a config value");
 						flowplayer.sendMessage(ChatColor.AQUA
-								+ "--------------------------------");
+								+ "-------Page 3 - /flow 3-------");
 						return true;
 					}
 				}
-				if (page > 2) {
+				if (page == 3) {
+					if (inf.getName().equalsIgnoreCase("flow")) {
+						flowplayer.sendMessage(ChatColor.AQUA
+								+ "------------Flow Info [3]------------");
+						flowplayer.sendMessage(ChatColor.AQUA
+								+ "Flow has fixed " + Flow.flowFixCount + " blocks this session!");
+						flowplayer.sendMessage(ChatColor.AQUA
+								+ "-------Page 3 - /flow 3-------");
+						return true;
+					}
+				}
+				if (page > 3) {
 					return false;
 				}
 			}
