@@ -40,8 +40,11 @@ public class RainFill implements Runnable {
 				if(isPlayerInRain(player)) {
 					increaseTime(player); // sub-routine
 					if(times.get(player.getName()) > rainFillSeconds) {
+						player.sendMessage("Filling your buckets!"); // User debug (not really needed)
+						plugin.getLogger().info("filling " + player.getName() + "'s buckets.");
 						fillBuckets(player); // sub-routine
 						times.put(player.getName(), 0); // reset time count
+						plugin.getLogger().info("buckets filled.");
 					}
 				} else
 					times.put(player.getName(), 0);
@@ -54,6 +57,13 @@ public class RainFill implements Runnable {
 	}
 
 	private void increaseTime(Player player) {
-		times.put(player.getName(), !times.containsKey(player.getName()) ? 0 : times.get(player.getName()));
+		boolean containsPlayer = times.containsKey(player.getName());
+		times.put(player.getName(), containsPlayer ? getTime(player) + 1 : 0);
+	}
+
+	private int getTime(Player player) {
+		if(times.containsKey(player.getName()))
+			return times.get(player.getName());
+		return 0;
 	}
 }
