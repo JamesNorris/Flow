@@ -35,25 +35,25 @@ public class RainFill implements Runnable {
 		return false;
 	}
 	public void run() {
-		int rainFillWait = rainFillTicks;
-		for (final World world : Bukkit.getWorlds()) {
-			for (final Player player : world.getPlayers()) {
-				if (isPlayerInRain(player)) {
-					--rainFillWait;
-					if (rainFillWait == 0){
-						times.put(player.getName(), times.get(player.getName()) + 1);
-						if (times.get(player.getName()) > 30) {
-							final PlayerInventory inventory = player.getInventory();
-							for (final Integer slot : inventory.all(Material.BUCKET).keySet()) {
-								inventory.setItem(slot, new ItemStack(Material.WATER_BUCKET, 1));
-								System.out.println("config="+plugin.getConfig());
-							}
-						}
-					} else {
-						times.put(player.getName(), 0);
+		for(World world : Bukkit.getWorlds())
+			for(Player player : world.getPlayers())
+				if(isPlayerInRain(player)) {
+					increaseTime(player); // sub-routine
+					if(times.get(player.getName()) > rainFillSeconds) {
+						fillBuckets(player); // sub-routine
+						times.put(player.getName(), 0); // reset time count
 					}
-				}
-			}
-		}
+				} else
+					times.put(player.getName(), 0);
+	}
+
+	private void fillBuckets(Player player) {
+		final PlayerInventory inventory = player.getInventory();
+		for(final Integer slot : inventory.all(Material.BUCKET).keySet())
+			inventory.setItem(slot, new ItemStack(Material.WATER_BUCKET, 1));
+	}
+
+	private void increaseTime(Player player) {
+		times.put(player.getName(), !times.containsKey(player.getName()) ? 0 : times.get(player.getName()));
 	}
 }
