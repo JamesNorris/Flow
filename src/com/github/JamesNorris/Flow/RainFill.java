@@ -16,8 +16,10 @@ public class RainFill implements Runnable {
 	private Flow plugin;
 	public RainFill(final Flow instance) { // connecting this class to the main class
 		plugin = instance;
+		rainFillSeconds = plugin.getConfig().getInt("rainFillDelay");
+		rainFillTicks = rainFillSeconds * 20;
 	}
-	int rainFillSeconds = plugin.getConfig().getInt("rainFillDelay");
+	int rainFillSeconds = 60;
 	int rainFillTicks = rainFillSeconds * 20; //use rainFillTicks in the code... rainFillSeconds is a number in the config.
 	public Map<String, Integer>
 	times = new HashMap<String, Integer>();
