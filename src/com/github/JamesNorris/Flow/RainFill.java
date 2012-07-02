@@ -19,8 +19,8 @@ public class RainFill implements Runnable {
 		rainFillSeconds = plugin.getConfig().getInt("rainFillDelay");
 		rainFillTicks = rainFillSeconds * 20;
 	}
-	int rainFillSeconds = 60;
-	int rainFillTicks = rainFillSeconds * 20; //use rainFillTicks in the code... rainFillSeconds is a number in the config.
+	int rainFillSeconds;
+	int rainFillTicks; //use rainFillTicks in the code... rainFillSeconds is a number in the config.
 	public Map<String, Integer>
 	times = new HashMap<String, Integer>();
 	private boolean isPlayerInRain(final Player player) {
@@ -29,8 +29,6 @@ public class RainFill implements Runnable {
 			final Location loc = player.getLocation();
 			final Biome biome = world.getBiome(loc.getBlockX(), loc.getBlockZ());
 			if (biome != Biome.DESERT && biome != Biome.DESERT_HILLS && world.getHighestBlockYAt(loc) <= loc.getBlockY()) {
-				System.out.println("Plugin="+plugin);
-				System.out.println("config="+plugin.getConfig());
 				return true;
 			}
 		}
@@ -48,6 +46,7 @@ public class RainFill implements Runnable {
 							final PlayerInventory inventory = player.getInventory();
 							for (final Integer slot : inventory.all(Material.BUCKET).keySet()) {
 								inventory.setItem(slot, new ItemStack(Material.WATER_BUCKET, 1));
+								System.out.println("config="+plugin.getConfig());
 							}
 						}
 					} else {
