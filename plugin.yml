@@ -1,0 +1,43 @@
+name: Flow
+main: com.github.jamesnorris.flow.Flow
+version: 1.3.0
+load: POSTWORLD
+author: JNorr44
+prefix: Flow
+commands:
+   flow:
+      description: General command for flow.
+      usage: Incorrect Syntax! '/flow' is correct.
+      permission: flow.user
+      permission-message: You don't have permission to use this command.
+permissions:
+    flow.user:
+        description: Allows user to use the basic command.
+        default: op
+    flow.info:
+        description: Allows user to show info.
+        default: op
+    flow.fix:
+        description: Allows user to fix water.
+        default: op
+    flow.height:
+        description: Allows user to set water height.
+        default: op
+    flow.waterbucket:
+        description: Allows user to use water buckets.
+        default: op
+    flow.lavabucket:
+        description: Allows user to use lava buckets.
+        default: op
+    flow.fill:
+        description: Allows users' buckets to be filled during rain.
+        default: op
+    flow.sponges:
+        description: Allows user to place/destroy sponges.
+        default: op
+    flow.craft.ice:
+        description: Allows user to craft ice.
+        default: op
+    flow.craft.sponge:
+        description: Allows user to craft sponges.
+        default: op

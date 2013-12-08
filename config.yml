@@ -1,0 +1,150 @@
+#Flow Configuration
+#Author: JNorr44 (James Norris)
+
+
+enabled: true
+#Enables/Disables the use of the plugin.
+
+enable_water: true
+#Enables/Disables use of water in the plugin.
+
+enable_lava: false
+#Enables/Disables use of lava in the plugin.
+
+enable_commands: true
+#Enables/Disables the use of the '/flow' command.
+
+limit_fix_to_below_player_level: true
+#Limits the fix of blocks to a semi-spherical area below the player. 
+#By default, the area is a full sphere around the player.
+
+limit_fix_to_below_player_one_block: false
+#Limits the fix of blocks to a circular (flat) area below the player. 
+#By default, the area is a full sphere around the player. 
+#(overrides 'limit_fix_to_below_player_level')
+
+max_fix_radius: 10
+#The maximum radius that a player using the '/flow fix' command can run the fix with.
+
+enable_liquid_height_setting: true
+#Enables/Disables the use of the liquid height setting feature.
+
+enable_command_fix: true
+#Enables/Disables the use of the '/flow fix' command.
+
+control_melting: false
+#Whether or not melting control should be enabled on the server. 
+#This influences the next few settings.
+
+prevent_ice_melting: false
+#Whether or not ice should be prevented from melting on the server. 
+#(depends on 'control_melting')
+
+prevent_water_freezing: false
+#Whether or not water should be prevented from freezing on the server. 
+#(depends on 'control_melting')
+
+prevent_snow_melting: false
+#Whether or not snow should be prevented from melting on the server. 
+#Snow does not melt to yield liquids. 
+#(depends on 'control_melting')
+
+enable_automatic_fix: true
+#Enables/Disables the automatic fix feature, in which
+#the plugin attempts to fix all player-created water glitches.
+
+use_bucket_permissions: true
+#Whether or not to require permission to dispense the liquids in buckets.
+
+enable_proximity_change: false
+#Enables/Disables changes to blocks that are directly touching or nearby liquids.
+#This only affects blocks modified by the plugin.
+
+enable_gravel_to_clay_change: false
+#Enables/Disables the gravel to clay proximity change caused when water touches gravel.
+
+gravel_to_clay_change_probability: 100
+#(1-100; for gravel only) The percent probability that gravel will change to clay when water is updated next to it.
+
+enable_sand_to_glass_change: false
+#Enables/Disables the sand to glass proximity change caused when lava touches sand.
+
+sand_to_glass_change_probability: 25
+#(1-100; for sand only) The percent probability that sand will change to glass when lava is updated next to it.
+
+enable_sand_to_obsidian_change: false
+#Enables/Disables the sand to obsidian proximity change caused when lava touches sand.
+
+sand_to_obsidian_change_probability: 25
+#(1-100; for sand only) The percent probability that sand will change to obsidian when lava is updated next to it.
+
+enable_sand_to_stone_change: false
+#Enables/Disables the sand to stone proximity change caused when lava touches sand.
+
+sand_to_stone_change_probability: 25
+#(1-100; for sand only) The percent probability that sand will change to stone when lava is updated next to it.
+
+enable_sand_to_quartz_change: false
+#Enables/Disables the sand to quartz proximity change caused when lava touches sand.
+
+sand_to_quartz_change_probability: 25
+#(1-100; for sand only) The percent probability that sand will change to quartz when lava is updated next to it.
+
+enable_sandstone_to_quartz_change: false
+#Enables/Disables the sandstone to quartz proximity change caused when lava touches sandstone.
+
+sandstone_to_quartz_change_probability: 100
+#(1-100; for sandstone only) The percent probability that sandstone will change to quartz when lava is updated next to it.
+
+enable_sponges: false
+#Enables/Disables the effects of sponges created by the plugin.
+
+sponge_effect_radius: 2
+#The radius of water that is removed when a sponge is replaced.
+
+enable_physics_around_removed_sponge: true
+#Enables/Disables physics is triggered when a songe is removed, fixing the water cleared by the sponge.
+
+enable_finite_liquids: false
+#Enables/Disables finite liquids, which will be placed and flow with the path of least resistance.
+
+enable_finite_liquid_accumulation: false
+#Enables/Disables the ability of finite liquids to accumulate into a source block when not already done so, and when no move can be made. 
+#(depends on 'enable_finite_liquids')
+
+enable_redstone_liquid_control: false
+#Enables/Disables redstone liquid controls, which modify liquid behavior based on redstone signals.
+
+enable_redstone_stream_extension: false
+#Enables/Disables redstone stream extension, extending a stream if a signal is detected.
+#(depends on 'enable_redstone_liquid_control')
+
+enable_piston_pushing_liquid: false
+#Enables/Disables the ability of pistons to push liquids, 
+#and the ability of liquids to push other liquids when pushed by a piston. 
+#(depends on 'enable_redstone_liquid_control')
+
+use_crafting_recipe_permissions: true
+#Whether or not to use Flow crafting permissions for recipes added by Flow.
+
+enable_sponge_crafting: true
+#Enables/Disables sponge crafting. 
+#(depends on 'use_crafting_recipe_permissions')
+
+enable_ice_crafting: true
+#Enables/Disables ice crafting. 
+#(depends on 'use_crafting_recipe_permissions')
+
+enable_rain_accumulation: false
+#Enables/Disables the accumulation of rain into player-held buckets.
+
+rain_accumulation_delay: 60
+#The delay before 'rain_accumulation_amount' buckets are filled via rain accumulation. 
+#(depends on 'enable_rain_accumulation')
+
+rain_accumulation_amount: 1
+#The amount of buckets filled after 'rain_accumulation_delay' with rain accumulation enabled. 
+#(depends on 'enable_rain_accumulation')
+
+
+#End of Flow Configuration
